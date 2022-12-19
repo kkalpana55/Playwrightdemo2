@@ -1,0 +1,17 @@
+{
+  "name": "playwrightdemo1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "jest": "^29.3.1",
+    "playwright": "^1.28.1"
+  }
+}
