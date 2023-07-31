@@ -32,14 +32,14 @@ describe('Applitools demo page',()=> {
         await browser.close();
     });
 
-    it('On clicking the home button it should display the page with the details of the open cases', async() => {
+    it('The details of the open cases', async() => {
        await loginpage.login();
        await page.waitForTimeout(3000);
        expect(await page.title()).toBe("Home | Investigator");
        await hpage.homepageverifyingfilteroption();
        await page.waitForTimeout(3000);
         expect(await page.title()).toBe("Home | Investigator");
-       //await page.waitForTimeout(3000);
+     
     });
        
     });

@@ -1,5 +1,3 @@
-
-
 const { chromium } = require('playwright');
 const Login = require('../POM/login.page');
 const Admin= require('../POM/Admin.page');
@@ -44,9 +42,9 @@ describe('Applitools demo page',()=> {
        await casespage.casemenu();
         await page.waitForTimeout(3000);
         expect(await page.title()).toBe("Cases overview: unassigned | Investigator");
-       //await page.waitForTimeout(3000);
-    });
-    
- 
-    
-    });
+        await casespage.unassignedverify();
+        await page.waitForTimeout(3000);
+        await casespage.openverify();
+       await page.waitForTimeout(3000);
+    }); 
+});

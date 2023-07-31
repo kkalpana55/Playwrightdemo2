@@ -9,7 +9,7 @@ const caps = {
     'resolution': '1024x768',  // You can choose any supported resolution as per the selected OS and OS version
 };
 describe('Applitools demo page',()=> {
-  jest.setTimeout(50000);
+  jest.setTimeout(500000);
     let browser = null;
     let context = null;
     let page = null;
@@ -32,7 +32,7 @@ describe('Applitools demo page',()=> {
 
     afterAll(async ()=>{
         // closing browser
-        await context.close();
+       await context.close();
         await browser.close();
     });
 
@@ -44,7 +44,10 @@ describe('Applitools demo page',()=> {
        await depage.DEmenu();
         await page.waitForTimeout(3000);
         expect(await page.title()).toBe("Data explorer: customers | Investigator");
-       //await page.waitForTimeout(3000);
-    });
-       
-    });
+       await page.waitForTimeout(3000);
+        await depage.partyverify();
+       await page.waitForTimeout(3000);
+       //await depage.verifydownloadwithfileextension();
+       await page.waitForTimeout(3000);
+           });
+  });

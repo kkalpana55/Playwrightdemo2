@@ -37,14 +37,15 @@ describe('Applitools demo page',()=> {
         await browser.close();
     });
 
-    it('Should be able to login as an analyst and verify the title of the page its landed on the homepage', async() => {
+    it('Should be able to login as an analyst and verify the title of the page and On selecting the checkbox -1selected - Button Reject should be enable and the checkbox for the case should be enabled.', async() => {
        await loginpage.login();
        await page.waitForTimeout(3000);
        expect(await page.title()).toBe("Home | Investigator");
        await reports.reportmenu();
         await page.waitForTimeout(3000);
         expect(await page.title()).toBe("Reports: review | Investigator");
-       //await page.waitForTimeout(3000);
-    });
-       
-    });
+       await page.waitForTimeout(3000);
+       await reports.reviewselectverification();
+      await page.waitForTimeout(3000);
+     });
+});

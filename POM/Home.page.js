@@ -1,5 +1,6 @@
 const { test, expect } = require('@playwright/test');
 const Login=require('./login.page');
+const playwright = require('playwright-aws-lambda');
 //create a class
 
 class homepage extends Login
@@ -14,17 +15,16 @@ class homepage extends Login
     
         async homepageverifyingfilteroption(){
                   
-         const elem=await this.page.locator('//div/div[2]/div/div/h2');
+         const elem=await this.page.locator('div>div:nth-child(2)>div>div>h2');
       
        await expect(elem).toHaveText("Open cases assigned to you")     
-       //await this.page.locator("//div/div[2]/div/div/h2");
        await this.page.locator('jtm-filter div').nth(2).click();
        await this.page.locator('app-default-filter').filter({ hasText: 'CategoryAny' }).locator('div').nth(1).click();
-        await this.page.locator('//div/div[1]/div[1]/cdk-virtual-scroll-viewport/div[1]/div[4]/jtm-checkbox').click();
-       const category= await this.page.locator('//div/jtm-multiselect-dropdown/div/div[1]/div[1]/cdk-virtual-scroll-viewport/div[1]/div[4]/span').innerText();
+       await this.page.locator('div:nth-child(4)>jtm-checkbox').click();
+       const category= await this.page.locator('div:nth-child(4)>span').innerText();
        await this.page.locator('.cdk-overlay-backdrop').click();
-       await this.page.waitForSelector("//div/div[2]/div/div/app-mercurial-table/div[2]/div/div/div/app-list-ui/table/tbody/tr/td[8]/div/app-badge/span",{timeout:5000});
-       const all6=await this.page.$$('//div/div[2]/div/div/app-mercurial-table/div[2]/div/div/div/app-list-ui/table/tbody/tr/td[8]/div/app-badge/span');
+       await this.page.waitForSelector("tbody>tr>td:nth-child(8)",{timeout:5000});
+       const all6=await this.page.$$('tbody>tr>td:nth-child(8)');
        const count6=  all6.length;
        //to print the number of menu items
        console.log("The number of cases :"+count6);
@@ -37,10 +37,10 @@ class homepage extends Login
        
         expect(await repo2.innerText()).toStrictEqual(category);
         console.log("Verifying whether the case displayed and the category chosen are same both are same:"+await repo2.innerText());
-        }
+        await this.page.screenshot({path:"C://Users//kkalp//OneDrive//Desktop//Screenshots//homepagescreenshot.png", full_page:true});
+      }
          }
-       
-       
+          
        
         }
     

@@ -1,5 +1,6 @@
 // inorder to use the Base page we need to delcare the base page as follows
 const { test, expect } = require('@playwright/test');
+const playwright = require('playwright-aws-lambda');
 const BasePage=require('./basepage.page');
 //create a class which extends the basepage
 class Login extends BasePage
@@ -15,13 +16,13 @@ class Login extends BasePage
 }
 async login(){
   //assigning the values to the email field and the password 
-await this.page.fill(this.Emailtxt,"freya@jumio.com");
+await this.page.fill(this.Emailtxt,"amy@jumio.com");
 await this.page.fill(this.passwordtxt,"tempPwd!23");
 // click on the signin button
 await this.page.getByRole('button', { name: 'Sign in' }).click();
+await this.page.screenshot({path:"C://Users//kkalp//OneDrive//Desktop//Screenshots//loginscreenshot.png", full_page:true});
 //to print all the menu items in the left side of the dashboard home page
-//waitForSelector is used to make page to load the element or else the elements value are not retreived 
-//it displayed as null value if we are not giving this statement
+
 }
 async dashboardmenu(){
 await this.page.waitForSelector("div>div.nav-bar-container>jtm-nav-item",{timeout:5000});

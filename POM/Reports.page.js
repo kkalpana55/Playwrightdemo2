@@ -1,5 +1,6 @@
 //To call the login page we need to delcare as
 const { test, expect } = require('@playwright/test');
+const playwright = require('playwright-aws-lambda');
 const Login=require('./login.page');
 //create a class
 class reports extends Login
@@ -14,7 +15,7 @@ class reports extends Login
 async reportmenu(){
 
     ////waitForSelector is used to make page to load the element or else the elements value are not retreived it displayed as null value if we are not giving this statement
-        await this.page.waitForSelector("//div/div[1]/jtm-navigation/div/div[1]/jtm-nav-item[3]/div/div/span[1]",{timeout:50000});
+        //await this.page.waitForSelector("//div/div[1]/jtm-navigation/div/div[1]/jtm-nav-item[3]/div/div/span[1]",{timeout:50000});
         //to click on the admin button
     await this.page.locator("//div/div[1]/jtm-navigation/div/div[1]/jtm-nav-item[3]/div/div/span[1]").click();
     //to print all the menu items in the left side of the dashboard home page
@@ -33,8 +34,27 @@ async reportmenu(){
     }
     
     }
+async reviewselectverification(){
+   // await this.page.waitForSelector("//*[@id='mat-checkbox-1-input']",{timeout:50000});
+   await this.page.locator('.mat-checkbox-inner-container').first(),{timeout:50000};
+await this.page.locator('.mat-checkbox-inner-container').first().click();
+   //await this.page.waitForSelector("//*[@id='mat-checkbox-2-input']",{timeout:50000});
+    expect(await this.page.locator('#mat-checkbox-2 > .mat-checkbox-layout > .mat-checkbox-inner-container').isChecked()).toBeTruthy();
+    expect(await this.page.locator('#mat-checkbox-3 > .mat-checkbox-layout > .mat-checkbox-inner-container').isChecked()).toBeTruthy();
+    expect(await this.page.locator('#mat-checkbox-4 > .mat-checkbox-layout > .mat-checkbox-inner-container').isChecked()).toBeTruthy();
+    expect(await this.page.locator('//div/div[2]/div/app-beam-tabs/div/app-tab[1]/div/div/app-mercurial-table/div[1]/div[1]/div/button[1]')).toBeEnabled();
+    expect(await this.page.locator('//div/div[2]/div/app-beam-tabs/div/app-tab[1]/div/div/app-mercurial-table/div[1]/div[1]/div/button[2]')).toBeDisabled();
+    await this.page.locator("//div/div[2]/div/app-beam-tabs/div/app-tab[1]/div/div/app-mercurial-table/div[2]/div/div/div/app-list-ui/table/tbody/tr[1]/td[7]/div").click();
+ await this.page.locator('#mat-dialog-0').getByText('Schedule').click();
+  await this.page.locator('textarea[name="note"]').click();
+  await this.page.locator('textarea[name="note"]').fill('test');
+  await this.page.getByRole('button', { name: 'Submit' }).click();
+  const errormsg=await this.page.getByText('SCHEDULE_REPORT_ERROR').innerText();
+  console.log(errormsg);
+expect(errormsg).toBe("REPORT HAS BEEN SUCCESSFULLY SCHEDULED");
 }
 
+}
   
 // to export this page
 module.exports= reports;

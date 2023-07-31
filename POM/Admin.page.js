@@ -1,5 +1,6 @@
 // To call the login page we need to delcare as
 const { test, expect } = require('@playwright/test');
+const playwright = require('playwright-aws-lambda');
 const Login=require('./login.page');
 //create a class
 class Admin extends Login
@@ -36,7 +37,7 @@ await this.page.waitForSelector("//div//div[2]//div//admin-sidebar//div//div[2]/
 await this.page.locator("//div//div[2]//div//admin-sidebar//div//div[2]//div[1]").click();
 await this.page.waitForSelector(" //*[@id='rules-table']/div[2]/div/div/div/app-list-ui/table/tbody/tr",{timeout:5000});
 //locating the element $$ is used to retreive multiple elements 
-const all3 =await this.page.$$("   //*[@id='rules-table']/div[2]/div/div/div/app-list-ui/table/tbody/tr");
+const all3 =await this.page.$$(" //*[@id='rules-table']/div[2]/div/div/div/app-list-ui/table/tbody/tr");
 // to find the total number of items
 const count3=  all3.length;
 //to print the number of menu items
