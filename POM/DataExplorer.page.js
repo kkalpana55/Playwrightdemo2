@@ -1,7 +1,7 @@
 //To call the login page we need to delcare as
 const { test, expect } = require('@playwright/test');
 const Login=require('./login.page');
-const playwright = require('playwright-aws-lambda');
+//const playwright = require('playwright-aws-lambda');
 //create a class
 class dataexplorer extends Login
 {
