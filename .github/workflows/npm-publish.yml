@@ -17,9 +17,12 @@ jobs:
         uses: actions/setup-node@v2 # This sets up Node.js environment
         with:
           node-version: '14' # Specify the Node.js version you need
+     
+      - name: Install Playwright packages
+        run: npm install -D playwright @playwright/test
 
-      - name: Install dependencies
-        run: npm install # Install your project dependencies, including @playwright/test
+
+
 
       - name: Run Playwright tests
         run: npm test # Command to run your Playwright tests
