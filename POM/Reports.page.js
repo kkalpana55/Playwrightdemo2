@@ -1,6 +1,6 @@
 //To call the login page we need to delcare as
 const { test, expect } = require('@playwright/test');
-const playwright = require('playwright-aws-lambda');
+//const playwright = require('playwright-aws-lambda');
 const Login=require('./login.page');
 //create a class
 class reports extends Login
