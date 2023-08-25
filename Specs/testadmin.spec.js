@@ -20,7 +20,7 @@ describe('Applitools demo page',()=> {
    let casespage=null;
     beforeAll( async ()=>{
         // we launch browser and navigate to the loginpage
-    browser = await chromium.launch({ headless: false });
+    browser = await chromium.launch({ headless: true });
     context = await browser.newContext();
     page = await context.newPage();
     loginpage= new Login(page);
