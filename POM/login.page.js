@@ -1,6 +1,6 @@
 // inorder to use the Base page we need to delcare the base page as follows
 const { test, expect } = require('@playwright/test');
-const playwright = require('playwright-aws-lambda');
+//const playwright = require('playwright-aws-lambda');
 const BasePage=require('./basepage.page');
 //create a class which extends the basepage
 class Login extends BasePage
