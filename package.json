@@ -6,9 +6,8 @@
   "scripts": {
     "test-html-report": "playwright test --browser=all --reporter=html",
     "test-json-report": "PLAYWRIGHT_JSON_OUTPUT_NAME=results.json playwright test --browser=chromium --reporter=json",
-       "test": "jest",
-       "start": "node index.js" ,
-       "test": "playwright test"
+       "test": "jest"
+      
   },
   "jest": {
     "testPathIgnorePatterns": [
