@@ -1,5 +1,5 @@
 const Login=require('./login.page');
-const playwright = require('playwright-aws-lambda');
+//const playwright = require('playwright-aws-lambda');
 const { test, expect } = require('@playwright/test');
 //create a class
 
