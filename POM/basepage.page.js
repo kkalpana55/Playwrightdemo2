@@ -1,5 +1,5 @@
 
-const playwright = require('playwright-aws-lambda');
+//const playwright = require('playwright-aws-lambda');
 class BasePage{
     //define the constructor of type page
  constructor(page){
