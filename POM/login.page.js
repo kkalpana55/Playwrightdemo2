@@ -16,8 +16,8 @@ class Login extends BasePage
 }
 async login(){
   //assigning the values to the email field and the password 
-await this.page.fill(this.Emailtxt,"amy@jumio.com");
-await this.page.fill(this.passwordtxt,"tempPwd!23");
+await this.page.fill(this.Emailtxt,"");
+await this.page.fill(this.passwordtxt,"");
 // click on the signin button
 await this.page.getByRole('button', { name: 'Sign in' }).click();
 await this.page.screenshot({path:"C://Users//kkalp//OneDrive//Desktop//Screenshots//loginscreenshot.png", full_page:true});
